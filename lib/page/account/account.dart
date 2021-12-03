@@ -24,89 +24,57 @@ class Account extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.only(left: 20,right: 20,top: 20,bottom: 20),
-                        child: StreamBuilder(
-                            stream:FirebaseFirestore.instance
-                                .collection('user')
-                                .doc(AuthenticationHelper().userId)
-                                .snapshots(),
-                            builder: (context, snapshot) {
-                              if (snapshot.hasError) {
-                                return  Row(
-                                  children: [
-                                    const CircleAvatar(
+                        child: Row(
+                          children: [
+                            StreamBuilder(
+                                stream:FirebaseFirestore.instance
+                                    .collection('user')
+                                    .doc(AuthenticationHelper().userId)
+                                    .snapshots(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasError) {
+                                    return const CircleAvatar(
                                       radius: 27,
-                                    ),
-                                    const Padding(padding: EdgeInsets.only(right: 10)),
-                                    Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            const Text(
-                                                'Lỗi hiển thị',style: const TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.black,
-                                                fontFamily: 'Gilroy-ExtraBold',
-                                                fontWeight: FontWeight.bold)),
-                                            const Padding(padding: EdgeInsets.only(right: 5)),
-                                            SvgPicture.asset('assets/images/pen.svg')
-                                          ],
-                                        ),
-                                        const Text(
-                                            'Lỗi hiển thị',style: const TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xff7C7C7C),
-                                            fontFamily: 'Gilroy-Light',
-                                            fontWeight: FontWeight.bold))
-                                      ],
-                                    )
-                                  ],
-                                );
-                              }
-                              if (!snapshot.hasData) {
-                                return Row(
-                                  children: [
-                                    const CircleAvatar(
+                                    );
+                                  }
+                                  if (!snapshot.hasData) {
+                                    return const CircleAvatar(
                                       radius: 27,
-                                    ),
-                                    const Padding(padding: EdgeInsets.only(right: 10)),
-                                    Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            const Text(
-                                                'Lỗi hiển thị',style: const TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.black,
-                                                fontFamily: 'Gilroy-ExtraBold',
-                                                fontWeight: FontWeight.bold)),
-                                            const Padding(padding: EdgeInsets.only(right: 5)),
-                                            SvgPicture.asset('assets/images/pen.svg')
-                                          ],
-                                        ),
-                                        const Text(
-                                            'Lỗi hiển thị',style: const TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xff7C7C7C),
-                                            fontFamily: 'Gilroy-Light',
-                                            fontWeight: FontWeight.bold))
-                                      ],
-                                    )
-                                  ],
-                                );
-                              }
-                              try {
-                                var userDocument =
-                                snapshot.data as dynamic;
-                                return Row(
-                                  children: [
-                                    CircleAvatar(
+                                    );
+                                  }
+                                  try {
+                                    var userDocument =
+                                    snapshot.data as dynamic;
+                                    return CircleAvatar(
                                       backgroundImage: NetworkImage('${userDocument !["img"]}'),
                                       radius: 27,
-                                    ),
-                                    const Padding(padding: EdgeInsets.only(right: 10)),
-                                    Column(
-                                      children: [
-                                        Row(
+                                    );
+                                  } on StateError catch (e) {
+                                    return const CircleAvatar(
+                                      radius: 27,
+                                    );
+                                  }
+                                }),
+                            const Padding(padding: EdgeInsets.only(right: 10)),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                StreamBuilder(
+                                    stream:FirebaseFirestore.instance
+                                        .collection('user')
+                                        .doc(AuthenticationHelper().userId)
+                                        .snapshots(),
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasError) {
+                                        return Text("Loading");
+                                      }
+                                      if (!snapshot.hasData) {
+                                        return Text("Loading");
+                                      }
+                                      try {
+                                        var userDocument =
+                                        snapshot.data as dynamic;
+                                        return Row(
                                           children: [
                                             Text(
                                                 '${userDocument !["user_name"]}',style: const TextStyle(
@@ -117,54 +85,52 @@ class Account extends StatelessWidget {
                                             Padding(padding: EdgeInsets.only(right: 5)),
                                             SvgPicture.asset('assets/images/pen.svg')
                                           ],
-                                        ),
-                                        Text(
+                                        );
+                                      } on StateError catch (e) {
+                                        return const Text('Lỗi tên',style:  TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                            fontFamily: 'Gilroy-Light',
+                                            fontWeight: FontWeight.bold));
+                                      }
+                                    }),
+                                StreamBuilder(
+                                    stream:FirebaseFirestore.instance
+                                        .collection('user')
+                                        .doc(AuthenticationHelper().userId)
+                                        .snapshots(),
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasError) {
+                                        return Text("Loading");
+                                      }
+                                      if (!snapshot.hasData) {
+                                        return Text("Loading");
+                                      }
+                                      try {
+                                        var userDocument =
+                                        snapshot.data as dynamic;
+                                        return Text(
                                             '${userDocument !["email"]}',style: const TextStyle(
                                             fontSize: 14,
                                             color: Color(0xff7C7C7C),
-                                            fontFamily: 'Gilroy-Light',
-                                            fontWeight: FontWeight.bold))
-                                      ],
-                                    )
-                                  ],
-                                );
-                              } on StateError catch (e) {
-                                return Row(
-                                  children: [
-                                    const CircleAvatar(
-                                      radius: 27,
-                                    ),
-                                    const Padding(padding: EdgeInsets.only(right: 10)),
-                                    Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            const Text(
-                                                'Lỗi hiển thị',style: const TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.black,
-                                                fontFamily: 'Gilroy-ExtraBold',
-                                                fontWeight: FontWeight.bold)),
-                                            const Padding(padding: EdgeInsets.only(right: 5)),
-                                            SvgPicture.asset('assets/images/pen.svg')
-                                          ],
-                                        ),
-                                        const Text(
-                                            'Lỗi hiển thị',style: const TextStyle(
+                                            fontFamily: 'Gilroy-ExtraBold',
+                                            fontWeight: FontWeight.bold));
+                                      } on StateError catch (e) {
+                                        return const Text('Loading',style:  TextStyle(
                                             fontSize: 14,
                                             color: Color(0xff7C7C7C),
                                             fontFamily: 'Gilroy-Light',
-                                            fontWeight: FontWeight.bold))
-                                      ],
-                                    )
-                                  ],
-                                );
-                              }
-                            }),
+                                            fontWeight: FontWeight.bold));
+                                      }
+                                    }),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xffE2E2E2))
+                            border: Border.all(color: Color(0xffE2E2E2))
                         ),
                       ),
                       Menu(img: 'assets/images/Ordersicon.svg', title: 'Orders'),
