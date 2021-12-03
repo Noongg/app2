@@ -115,9 +115,14 @@ class ProductDetail extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  InkWell(
-                                    child: SvgPicture.asset(
-                                        'assets/images/tru.svg'),
+                                  GestureDetector(
+                                    child: SizedBox(
+                                      child: SvgPicture.asset(
+                                          'assets/images/tru.svg'),
+                                      height: 25,
+                                      width: 25,
+                                    ),
+                                    behavior: HitTestBehavior.opaque,
                                     onTap: () {
                                       data.decrement();
                                     },
@@ -143,9 +148,14 @@ class ProductDetail extends StatelessWidget {
                                       )),
                                   const Padding(
                                       padding: EdgeInsets.only(left: 10)),
-                                  InkWell(
-                                    child: SvgPicture.asset(
-                                        'assets/images/cong.svg'),
+                                  GestureDetector(
+                                    behavior: HitTestBehavior.opaque,
+                                    child: SizedBox(
+                                      child: SvgPicture.asset(
+                                          'assets/images/cong.svg'),
+                                      height: 25,
+                                      width: 25,
+                                    ),
                                     onTap: () {
                                       data.increment();
                                     },
