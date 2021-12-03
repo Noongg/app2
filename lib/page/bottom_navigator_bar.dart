@@ -18,6 +18,7 @@ class BottomNav extends GetView<ControllerNav> {
     return GetBuilder<ControllerNav>(
         init: ControllerNav(),
         builder: (data) => Scaffold(
+
               body: IndexedStack(
                 index: data.currentIndex,
                 children: [
@@ -28,43 +29,62 @@ class BottomNav extends GetView<ControllerNav> {
                   Account()//2
                 ],
               ),
-              bottomNavigationBar: BottomNavigationBar(
-                currentIndex: data.currentIndex,
-                onTap: (index) {
-                  data.changeTabIndex(index);
-                },
-                items: [
-                  BottomNavigationBarItem(
-                    icon: SvgPicture.asset('assets/images/home.svg'),
-                    label: 'Home',
-                    activeIcon: SvgPicture.asset('assets/images/home.svg',color: Color(0xff53B175),),
+              bottomNavigationBar: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      topLeft: Radius.circular(15),),
+                    boxShadow: [
+                      BoxShadow(
+                          offset: Offset(0.0, 1.00), //(x,y)
+                          blurRadius: 4.00,
+                          color: Colors.grey,
+                          spreadRadius: 1.00),
+                    ],
+                  
                   ),
-                  BottomNavigationBarItem(
-                    icon: SvgPicture.asset('assets/images/explore.svg'),
-                    label: 'Explore',
-                    activeIcon: SvgPicture.asset('assets/images/explore.svg',color: Color(0xff53B175),),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: SvgPicture.asset('assets/images/cart.svg'),
-                    label: 'Cart',
-                    activeIcon: SvgPicture.asset('assets/images/cart.svg',color: Color(0xff53B175),),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: SvgPicture.asset('assets/images/favourite.svg'),
-                    label: 'Favourite',
-                    activeIcon: SvgPicture.asset('assets/images/favourite.svg',color: Color(0xff53B175),),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: SvgPicture.asset('assets/images/account.svg'),
-                    label: 'Account',
-                    activeIcon: SvgPicture.asset('assets/images/account.svg',color: Color(0xff53B175),),
-                  ),
-                ],
-                selectedItemColor: Color(0xff53B175),
-                showUnselectedLabels: true,
-                unselectedItemColor: Colors.black,
-                showSelectedLabels: true,
-                type: BottomNavigationBarType.fixed,
+
+                child: BottomNavigationBar(
+                  elevation: 0,
+                  currentIndex: data.currentIndex,
+                  onTap: (index) {
+                    data.changeTabIndex(index);
+                  },
+                  items: [
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset('assets/images/home.svg'),
+                      label: 'Home',
+                      activeIcon: SvgPicture.asset('assets/images/home.svg',color: Color(0xff53B175),),
+                    ),
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset('assets/images/explore.svg'),
+                      label: 'Explore',
+                      activeIcon: SvgPicture.asset('assets/images/explore.svg',color: Color(0xff53B175),),
+                    ),
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset('assets/images/cart.svg'),
+                      label: 'Cart',
+                      activeIcon: SvgPicture.asset('assets/images/cart.svg',color: Color(0xff53B175),),
+                    ),
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset('assets/images/favourite.svg'),
+                      label: 'Favourite',
+                      activeIcon: SvgPicture.asset('assets/images/favourite.svg',color: Color(0xff53B175),),
+                    ),
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset('assets/images/account.svg'),
+                      label: 'Account',
+                      activeIcon: SvgPicture.asset('assets/images/account.svg',color: Color(0xff53B175),),
+                    ),
+                  ],
+                  backgroundColor: Colors.transparent,
+                  selectedItemColor: Color(0xff53B175),
+                  showUnselectedLabels: true,
+                  unselectedItemColor: Colors.black,
+                  showSelectedLabels: true,
+                  type: BottomNavigationBarType.fixed,
+                ),
               ),
             ));
   }
