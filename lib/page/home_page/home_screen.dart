@@ -10,11 +10,8 @@ import 'package:test_flutter_app2/controller/controller_home_screen.dart';
 import 'package:test_flutter_app2/page/home_page/widget/groceries_item.dart';
 import 'package:test_flutter_app2/page/home_page/widget/listview_vegetables.dart';
 import 'package:test_flutter_app2/custom/search.dart';
-import 'package:test_flutter_app2/firebase/authentication.dart';
 import 'package:test_flutter_app2/page/home_page/widget/slider_banner.dart';
 import 'package:test_flutter_app2/page/home_page/widget/title.dart';
-import 'package:test_flutter_app2/page/search/search_page.dart';
-import 'package:test_flutter_app2/page/select_location.dart';
 import 'package:test_flutter_app2/router/router.dart';
 
 class HomeScreen extends GetWidget<ControllerHomeScreen> {

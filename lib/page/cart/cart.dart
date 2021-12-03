@@ -2,28 +2,25 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:test_flutter_app2/controller/controller_bottom_nav.dart';
 import 'package:test_flutter_app2/controller/controller_cart.dart';
 import 'package:test_flutter_app2/custom/button.dart';
 import 'package:test_flutter_app2/page/cart/widget/bottom_sheet.dart';
+
 class Cart extends StatelessWidget {
   const Cart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ControllerNav>(
-        init: ControllerNav(),
-        builder: (back)=>WillPopScope(
-            child: GetBuilder<ControllerCart>(
-            init: ControllerCart(),
-              builder: (data) => Scaffold(
+    return GetBuilder<ControllerCart>(
+        init: ControllerCart(),
+        builder: (data) => Scaffold(
               backgroundColor: Colors.white,
               appBar: AppBar(
                 centerTitle: true,
                 backgroundColor: Colors.white,
                 elevation: 0.5,
                 title: const Text('My Cart',
-                    style:  TextStyle(
+                    style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
                         fontFamily: 'Gilroy-ExtraBold',
@@ -35,13 +32,12 @@ class Cart extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xffE2E2E2))
-                    ),
+                        border: Border.all(color: Color(0xffE2E2E2))),
                     height: MediaQuery.of(context).size.height * 0.75,
                     child: ListView.separated(
                         padding: EdgeInsets.only(left: 20, right: 20),
                         separatorBuilder: (BuildContext context, int index) =>
-                        const Divider(),
+                            const Divider(),
                         itemCount: data.itemCount,
                         itemBuilder: (context, index) {
                           return Container(
@@ -54,14 +50,16 @@ class Cart extends StatelessWidget {
                                   height: 65,
                                   fit: BoxFit.cover,
                                 ),
-                                const Padding(padding: EdgeInsets.only(right: 30)),
+                                const Padding(
+                                    padding: EdgeInsets.only(right: 30)),
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
                                               data.items.values
@@ -70,11 +68,15 @@ class Cart extends StatelessWidget {
                                               style: const TextStyle(
                                                   fontSize: 16,
                                                   color: Colors.black,
-                                                  fontFamily: 'Gilroy-ExtraBold',
+                                                  fontFamily:
+                                                      'Gilroy-ExtraBold',
                                                   fontWeight: FontWeight.bold)),
                                           GestureDetector(
                                             onTap: () {
-                                              data.removeitem(int.parse(data.items.values.toList()[index].id));
+                                              data.removeitem(int.parse(data
+                                                  .items.values
+                                                  .toList()[index]
+                                                  .id));
                                             },
                                             child: SvgPicture.asset(
                                                 'assets/images/cancel.svg'),
@@ -94,7 +96,7 @@ class Cart extends StatelessWidget {
                                           padding: EdgeInsets.only(top: 15)),
                                       Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Row(
                                             children: [
@@ -109,19 +111,20 @@ class Cart extends StatelessWidget {
                                                 ),
                                               ),
                                               const Padding(
-                                                  padding:
-                                                  EdgeInsets.only(right: 5)),
+                                                  padding: EdgeInsets.only(
+                                                      right: 5)),
                                               Text(
                                                   '${data.items.values.toList()[index].quantity}',
                                                   style: const TextStyle(
                                                       fontSize: 16,
                                                       color: Colors.black,
                                                       fontFamily:
-                                                      'Gilroy-ExtraBold',
-                                                      fontWeight: FontWeight.bold)),
+                                                          'Gilroy-ExtraBold',
+                                                      fontWeight:
+                                                          FontWeight.bold)),
                                               const Padding(
-                                                  padding:
-                                                  EdgeInsets.only(right: 5)),
+                                                  padding: EdgeInsets.only(
+                                                      right: 5)),
                                               GestureDetector(
                                                 onTap: () {
                                                   data.increment(index);
@@ -142,7 +145,6 @@ class Cart extends StatelessWidget {
                                                   fontWeight: FontWeight.bold)),
                                         ],
                                       ),
-
                                     ],
                                   ),
                                 )
@@ -153,19 +155,18 @@ class Cart extends StatelessWidget {
                   ),
                   Positioned(
                       bottom: -35,
-                      child: Button(name: 'Go to Checkout', ontap: (){
-                        Get.bottomSheet(
-                            BottomSheetCheck(context,data.totalItem,data),
-                            isScrollControlled: true
-                        );
-                      }, context: context,check: true,total: data.totalItem))
+                      child: Button(
+                          name: 'Go to Checkout',
+                          ontap: () {
+                            Get.bottomSheet(
+                                BottomSheetCheck(context, data.totalItem, data),
+                                isScrollControlled: true);
+                          },
+                          context: context,
+                          check: true,
+                          total: data.totalItem))
                 ],
               ),
-            )),
-            onWillPop: ()async{
-              back.changeTabIndex(0);
-              return false;
-            }));
+            ));
   }
 }
-
