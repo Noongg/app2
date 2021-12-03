@@ -16,7 +16,7 @@ class Cart extends StatelessWidget {
         builder: (back)=>WillPopScope(
             child: GetBuilder<ControllerCart>(
             init: ControllerCart(),
-            builder: (data) => Scaffold(
+              builder: (data) => Scaffold(
               backgroundColor: Colors.white,
               appBar: AppBar(
                 centerTitle: true,

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:test_flutter_app2/controller/controller_bottom_nav.dart';
 import 'package:test_flutter_app2/controller/controller_home_screen.dart';
 import 'package:test_flutter_app2/page/home_page/widget/groceries_item.dart';
 import 'package:test_flutter_app2/page/home_page/widget/listview_vegetables.dart';

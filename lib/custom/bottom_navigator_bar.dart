@@ -11,7 +11,7 @@ import 'package:test_flutter_app2/page/favourite/favourite.dart';
 import 'package:test_flutter_app2/page/home_page/home_screen.dart';
 
 class BottomNav extends GetView<ControllerNav> {
-  const BottomNav({Key? key}) : super(key: key);
+  BottomNav({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +30,9 @@ class BottomNav extends GetView<ControllerNav> {
                 ],
               ),
               bottomNavigationBar: Container(
-                  decoration: BoxDecoration(
+                  decoration:const BoxDecoration(
                     color: Colors.white,
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       topRight: Radius.circular(15),
                       topLeft: Radius.circular(15),),
                     boxShadow: [
@@ -42,7 +42,7 @@ class BottomNav extends GetView<ControllerNav> {
                           color: Colors.grey,
                           spreadRadius: 1.00),
                     ],
-                  
+
                   ),
 
                 child: BottomNavigationBar(
