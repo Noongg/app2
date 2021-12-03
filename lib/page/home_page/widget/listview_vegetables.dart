@@ -1,36 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:test_flutter_app2/controller/controller_home_screen.dart';
 import 'package:test_flutter_app2/model/vegetables.dart';
-import 'package:test_flutter_app2/page/product/product_detail.dart';
 import 'package:test_flutter_app2/router/router.dart';
 
-Widget ListViewVegetables({required List<Vegetables> list}){
+Widget ListViewVegetables({required List<Vegetables> list}) {
   return ListView.builder(
+      padding: EdgeInsets.only(left: 25),
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
       itemCount: list.length,
-      itemBuilder: (context,index){
+      itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: (){
-            Get.toNamed(Routes.PRODUCTDETAIL,arguments: {"vegetables": list[index]});
+          onTap: () {
+            Get.toNamed(Routes.PRODUCTDETAIL,
+                arguments: {"vegetables": list[index]});
           },
           child: Container(
             margin: EdgeInsets.only(right: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(18),
-                border: Border.all(width: 1,color: Color(0xffE2E2E2))
-            ),
+                border: Border.all(width: 1, color: Color(0xffE2E2E2))),
             height: 230,
             width: 150,
             child: Container(
-              padding: const EdgeInsets.only(top: 20,right: 10,left: 10),
+              padding: const EdgeInsets.only(top: 20, right: 10, left: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
-                    child: Image.network(list[index].img,height: 80,width: 90,fit: BoxFit.cover,),
+                    child: Image.network(
+                      list[index].img,
+                      height: 80,
+                      width: 90,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   const Padding(padding: EdgeInsets.only(top: 10)),
                   Text(list[index].title,

@@ -72,8 +72,7 @@ class HomeScreen extends GetWidget<ControllerHomeScreen> {
                         child: TitleCategories(title: "Exclusive Offer"),
                         padding: EdgeInsets.only(left: 25, right: 25),
                       ),
-                      Container(
-                        padding: EdgeInsets.only(left: 25),
+                      SizedBox(
                         height: 230,
                         width: MediaQuery.of(context).size.width,
                         child: ListViewVegetables(list: data.vegetablesList),
@@ -82,8 +81,7 @@ class HomeScreen extends GetWidget<ControllerHomeScreen> {
                         child: TitleCategories(title: "Best Selling"),
                         padding: EdgeInsets.only(left: 25, right: 25),
                       ),
-                      Container(
-                        padding: EdgeInsets.only(left: 25),
+                      SizedBox(
                         height: 230,
                         width: MediaQuery.of(context).size.width,
                         child: ListViewVegetables(
@@ -93,11 +91,11 @@ class HomeScreen extends GetWidget<ControllerHomeScreen> {
                         child: TitleCategories(title: "Groceries"),
                         padding: EdgeInsets.only(left: 25, right: 25),
                       ),
-                      Container(
-                        padding: EdgeInsets.only(left: 25),
+                      SizedBox(
                         height: 100,
                         width: MediaQuery.of(context).size.width,
                         child: ListView(
+                          padding: EdgeInsets.only(left: 25),
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           children: [
@@ -114,8 +112,7 @@ class HomeScreen extends GetWidget<ControllerHomeScreen> {
                         ),
                       ),
                       const Padding(padding: EdgeInsets.only(top: 20)),
-                      Container(
-                        padding: EdgeInsets.only(left: 25),
+                      SizedBox(
                         height: 230,
                         width: MediaQuery.of(context).size.width,
                         child:
