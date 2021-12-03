@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:test_flutter_app2/controller/controller_home_screen.dart';
 import 'package:test_flutter_app2/model/vegetables.dart';
 import 'package:test_flutter_app2/page/product/product_detail.dart';
+import 'package:test_flutter_app2/router/router.dart';
 
 Widget ListViewVegetables({required List<Vegetables> list}){
   return ListView.builder(
@@ -13,7 +14,7 @@ Widget ListViewVegetables({required List<Vegetables> list}){
       itemBuilder: (context,index){
         return GestureDetector(
           onTap: (){
-            Get.to(()=>ProductDetail(vegetables: list[index],));
+            Get.toNamed(Routes.PRODUCTDETAIL,arguments: {"vegetables": list[index]});
           },
           child: Container(
             margin: EdgeInsets.only(right: 10),

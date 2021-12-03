@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter_app2/firebase/authentication.dart';
 import 'package:test_flutter_app2/custom/button.dart';
-import 'package:test_flutter_app2/page/bottom_navigator_bar.dart';
+import 'package:test_flutter_app2/custom/bottom_navigator_bar.dart';
 import 'package:test_flutter_app2/page/home_page/home_screen.dart';
-import 'package:test_flutter_app2/page/reset_password.dart';
-import 'package:test_flutter_app2/page/sign_up.dart';
+import 'package:test_flutter_app2/page/login_email/reset_password.dart';
+import 'package:test_flutter_app2/page/login_email/sign_up.dart';
+import 'package:test_flutter_app2/router/router.dart';
 class Login extends StatefulWidget {
   Login({Key? key}) : super(key: key);
 
@@ -95,7 +96,7 @@ class _LoginState extends State<Login> {
                           fontSize: 14,color: Color(0xff181725),fontFamily: 'Gilroy-Light',fontWeight: FontWeight.bold
                       ),),
                       onTap: (){
-                        Get.to(()=>ResetPassWord());
+                        Get.toNamed(Routes.RESETPASSWORD);
                       },
                     ),
                   ),
@@ -112,7 +113,7 @@ class _LoginState extends State<Login> {
                           Map<String,dynamic> passUp={"password":_controllerPass.text};
                           AuthenticationHelper().putFirestore(passUp);
                           isLoading=false;
-                          Get.offAll(()=>BottomNav());
+                          Get.offAllNamed(Routes.BOTTOMNAV);
                         }else{
                           isLoading=false;
                           Get.snackbar('Thông báo', 'Sai mật khẩu hoặc Tài khoản');
@@ -132,7 +133,7 @@ class _LoginState extends State<Login> {
                             fontSize: 14,color: Color(0xff53B175),fontFamily: 'Gilroy-Light',fontWeight: FontWeight.bold
                         ),),
                         onTap: (){
-                          Get.to(SignUp());
+                          Get.toNamed(Routes.SIGNUP);
                         },
                       ),
                     ],

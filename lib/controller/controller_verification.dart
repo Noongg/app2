@@ -2,8 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter_app2/firebase/authentication.dart';
-import 'package:test_flutter_app2/page/bottom_navigator_bar.dart';
+import 'package:test_flutter_app2/custom/bottom_navigator_bar.dart';
 import 'package:test_flutter_app2/page/home_page/home_screen.dart';
+import 'package:test_flutter_app2/router/router.dart';
 
 class ControllerVerification extends GetxController{
   late String verificationID,phone;
@@ -48,7 +49,7 @@ class ControllerVerification extends GetxController{
       if(value.user!=null){
         Map<String,dynamic> user={"email":'',"sdt":phone,"user_name":''};
         AuthenticationHelper().postFirestore(user);
-        Get.offAll(()=>BottomNav());
+        Get.offAllNamed(Routes.BOTTOMNAV);
       }else{
         Get.snackbar('Thông báo', "Sai mã code");
       }

@@ -47,6 +47,7 @@ class BottomNav extends GetView<ControllerNav> {
 
                 child: BottomNavigationBar(
                   elevation: 0,
+
                   currentIndex: data.currentIndex,
                   onTap: (index) {
                     data.changeTabIndex(index);
@@ -81,6 +82,7 @@ class BottomNav extends GetView<ControllerNav> {
                   backgroundColor: Colors.transparent,
                   selectedItemColor: Color(0xff53B175),
                   showUnselectedLabels: true,
+                  selectedFontSize: 12,
                   unselectedItemColor: Colors.black,
                   showSelectedLabels: true,
                   type: BottomNavigationBarType.fixed,

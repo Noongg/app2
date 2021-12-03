@@ -12,6 +12,7 @@ import 'package:test_flutter_app2/custom/button.dart';
 import 'package:test_flutter_app2/firebase/authentication.dart';
 import 'package:test_flutter_app2/page/order_accepted.dart';
 import 'package:test_flutter_app2/page/select_location.dart';
+import 'package:test_flutter_app2/router/router.dart';
 
 Widget BottomSheetCheck(BuildContext context,int total,ControllerCart data) {
 
@@ -69,7 +70,7 @@ Widget BottomSheetCheck(BuildContext context,int total,ControllerCart data) {
                               fontWeight: FontWeight.bold)),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => SelectLocation(checkIndex: '',));
+                          Get.toNamed(Routes.SELECTLOCATION,arguments: '');
                         },
                         child: Row(
                           children: [
@@ -127,7 +128,7 @@ Widget BottomSheetCheck(BuildContext context,int total,ControllerCart data) {
                               fontWeight: FontWeight.bold)),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => SelectLocation(checkIndex: '',));
+
                         },
                         child: Row(
                           children: [
@@ -157,7 +158,7 @@ Widget BottomSheetCheck(BuildContext context,int total,ControllerCart data) {
                               fontWeight: FontWeight.bold)),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => SelectLocation(checkIndex: '',));
+
                         },
                         child: Row(
                           children: [
@@ -191,7 +192,7 @@ Widget BottomSheetCheck(BuildContext context,int total,ControllerCart data) {
                               fontWeight: FontWeight.bold)),
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => SelectLocation(checkIndex: '',));
+
                         },
                         child: Row(
                           children: [

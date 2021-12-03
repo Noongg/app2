@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter_app2/model/vegetables.dart';
 import 'package:test_flutter_app2/page/product/product_detail.dart';
+import 'package:test_flutter_app2/router/router.dart';
 
 Widget GridviewItem(List<Vegetables> list){
   return GridView.builder(
@@ -17,7 +18,7 @@ Widget GridviewItem(List<Vegetables> list){
         return GestureDetector(
           onTap: (){
             Get.back();
-            Get.to(()=>ProductDetail(vegetables: list[index],));
+            Get.toNamed(Routes.PRODUCTDETAIL,arguments: {"vegetables": list[index]});
           },
           child: Container(
             margin: EdgeInsets.only(right: 10),

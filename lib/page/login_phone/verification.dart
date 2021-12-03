@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:test_flutter_app2/controller/controller_verification.dart';
 import 'package:test_flutter_app2/firebase/authentication.dart';
 import 'package:test_flutter_app2/page/home_page/home_screen.dart';
-import 'package:test_flutter_app2/page/login.dart';
+import 'package:test_flutter_app2/page/login_email/login.dart';
 import 'package:test_flutter_app2/page/select_location.dart';
 
 class Verification extends GetView<ControllerVerification>{

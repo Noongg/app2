@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter_app2/page/onbording.dart';
+import 'package:test_flutter_app2/router/router.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _navigatortohome() async{
     await Future.delayed(Duration(milliseconds: 2000),(){
-      Get.off(() => OnBording());
+      Get.offNamed(Routes.ONBORDING);
     });
   }
 

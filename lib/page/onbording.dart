@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter_app2/custom/button.dart';
-import 'package:test_flutter_app2/page/login.dart';
+import 'package:test_flutter_app2/page/login_email/login.dart';
 import 'package:test_flutter_app2/page/sign_in.dart';
+import 'package:test_flutter_app2/router/router.dart';
 class OnBording extends StatelessWidget {
   const OnBording({Key? key}) : super(key: key);
 
@@ -34,7 +35,7 @@ class OnBording extends StatelessWidget {
                   fontSize: 16,color: Color.fromARGB(150, 252, 252, 252),fontFamily: 'Gilroy-Light'
               ),),
               const Padding(padding: EdgeInsets.only(top: 30)),
-              Button(name: 'Get Started', ontap: (){Get.to(()=>SignIn());}, context: context,check: false,total: 10)
+              Button(name: 'Get Started', ontap: (){Get.toNamed(Routes.SIGNIN);}, context: context,check: false,total: 10)
             ],
           ),
         ),

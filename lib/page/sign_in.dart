@@ -5,10 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter_app2/firebase/authentication.dart';
-import 'package:test_flutter_app2/page/bottom_navigator_bar.dart';
+import 'package:test_flutter_app2/custom/bottom_navigator_bar.dart';
 import 'package:test_flutter_app2/page/home_page/home_screen.dart';
-import 'package:test_flutter_app2/page/login.dart';
-import 'package:test_flutter_app2/page/number.dart';
+import 'package:test_flutter_app2/page/login_email/login.dart';
+import 'package:test_flutter_app2/page/login_phone/number.dart';
+import 'package:test_flutter_app2/router/router.dart';
 
 class SignIn extends StatelessWidget {
   SignIn({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class SignIn extends StatelessWidget {
                 ischeck?Center(child: CircularProgressIndicator(),):ElevatedButton (
                   onPressed: () async{
                     await AuthenticationHelper().signInWithGoogle();
-                    Get.offAll(BottomNav());
+                    Get.offAllNamed(Routes.BOTTOMNAV);
                   },
                   style: ElevatedButton.styleFrom(
                     minimumSize: Size(MediaQuery.of(context).size.width, 56),
@@ -60,7 +61,7 @@ class SignIn extends StatelessWidget {
                 const Padding(padding: EdgeInsets.only(bottom: 20)),
                 OutlinedButton(
                     onPressed: (){
-                      Get.to(Number());
+                      Get.toNamed(Routes.NUMBER);
                     },
                     style: ElevatedButton.styleFrom(
                     minimumSize: Size(MediaQuery.of(context).size.width*0.75, 50),
@@ -86,7 +87,7 @@ class SignIn extends StatelessWidget {
                       child: ischeck?Center(child: CircularProgressIndicator(),):IconButton(
                         onPressed: ()async{
                           await AuthenticationHelper().signInWithFacebook();
-                          Get.offAll(BottomNav());
+                          Get.offAllNamed(Routes.BOTTOMNAV);
                         },
                         icon: Image.asset('assets/images/fb.png'),),
                     ),
@@ -133,7 +134,7 @@ class SignIn extends StatelessWidget {
                         ),
                       ),
                       onTap: (){
-                        Get.to(Login());
+                        Get.toNamed(Routes.LOGIN);
                       },
                     )
                   ],

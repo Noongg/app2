@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter_app2/firebase/authentication.dart';
-import 'package:test_flutter_app2/page/verification.dart';
+import 'package:test_flutter_app2/page/login_phone/verification.dart';
+import 'package:test_flutter_app2/router/router.dart';
 class Number extends StatelessWidget {
   Number({Key? key}) : super(key: key);
 
@@ -65,9 +66,7 @@ class Number extends StatelessWidget {
           } else {
             if(_controller.text[0]=="0"){
               String phone=(_controller.text).substring(1);
-              Get.to(Verification(),arguments: {
-                "phone" : "+84"+phone,
-              });
+              Get.toNamed(Routes.VERIFICATION,arguments: {"phone" : "+84"+phone,});
             }
           }
 

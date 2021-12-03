@@ -8,6 +8,7 @@ import 'package:test_flutter_app2/controller/controller_favourite.dart';
 import 'package:test_flutter_app2/controller/controller_product_detail.dart';
 import 'package:test_flutter_app2/custom/button.dart';
 import 'package:test_flutter_app2/page/product/product_detail.dart';
+import 'package:test_flutter_app2/router/router.dart';
 
 class Favourite extends StatelessWidget {
   const Favourite({Key? key}) : super(key: key);
@@ -46,9 +47,8 @@ class Favourite extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   return InkWell(
                                     onTap: () {
-                                      Get.to(ProductDetail(
-                                          vegetables: fav.itemsFavourite.values
-                                              .toList()[index]));
+                                      Get.toNamed(Routes.PRODUCTDETAIL,arguments: {"vegetables": fav.itemsFavourite.values
+                                          .toList()[index]});
                                     },
                                     child: Row(
                                       mainAxisAlignment:

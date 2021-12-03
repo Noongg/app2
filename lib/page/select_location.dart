@@ -1,17 +1,15 @@
 import 'dart:ui';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter_app2/firebase/authentication.dart';
 import 'package:test_flutter_app2/custom/button.dart';
-import 'package:test_flutter_app2/page/home_page/home_screen.dart';
-import 'package:test_flutter_app2/page/login.dart';
+import 'package:test_flutter_app2/router/router.dart';
 
 class SelectLocation extends StatefulWidget {
-  SelectLocation({Key? key, required this.checkIndex}) : super(key: key);
+  SelectLocation({Key? key}) : super(key: key);
 
-  String checkIndex;
+  final checkIndex = Get.arguments as String;
   @override
   State<SelectLocation> createState() => _SelectLocationState();
 }
@@ -93,7 +91,7 @@ class _SelectLocationState extends State<SelectLocation> {
                         AuthenticationHelper().putFirestore(adress);
 
                         if(widget.checkIndex=='signUp'){
-                          Get.offAll(()=>HomeScreen());
+                          Get.offAllNamed(Routes.BOTTOMNAV);
                         }else{
                           Get.back();
                         }

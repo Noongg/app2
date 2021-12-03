@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_flutter_app2/firebase/authentication.dart';
-import 'package:test_flutter_app2/page/login.dart';
+import 'package:test_flutter_app2/page/login_email/login.dart';
 import 'package:test_flutter_app2/page/select_location.dart';
+import 'package:test_flutter_app2/router/router.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -155,7 +156,7 @@ class _SignUpState extends State<SignUp> {
                               Map<String,dynamic> user={"email":_controllerEmail.text,"password":_controllerPass.text,"user_name":_controllerName.text};
                               AuthenticationHelper().postFirestore(user);
                               isLoading=false;
-                              Get.to(SelectLocation(checkIndex: 'signUp',));
+                              Get.toNamed(Routes.SELECTLOCATION,arguments: 'signUp' );
                             }
                             else{
                               isLoading=true;
@@ -188,7 +189,7 @@ class _SignUpState extends State<SignUp> {
                             fontSize: 14,color: Color(0xff53B175),fontFamily: 'Gilroy-Light',fontWeight: FontWeight.bold
                         ),),
                         onTap: (){
-                          Get.to(Login());
+                          Get.toNamed(Routes.LOGIN);
                         },
                       ),
                     ],
